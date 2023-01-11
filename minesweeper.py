@@ -6,32 +6,40 @@ import sys
 
 # Hashtag board
 
-field = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+# board is simply an arr of nums to map here
+def layout(board):  
+    print(str(board[0]) + '|' + str(board[1]) + ' |' + str(board[2]))
+    print('-+--+-')
+    print(str(board[3]) + '|' + str(board[4]) + ' |' + str(board[5]))
+    print('-+--+-')
+    print(str(board[6]) + '|' + str(board[7]) + ' |' + str(board[8]))
 
-def layout(board):
-    print(str(field[0]) + '|' + str(field[1]) + ' |' + str(field[2]))
-    print('-+--+-')
-    print(str(field[3]) + '|' + str(field[4]) + ' |' + str(field[5]))
-    print('-+--+-')
-    print(str(field[6]) + '|' + str(field[7]) + ' |' + str(field[8]))
 
 # Game Logic
 
-while True:
-    print('COLLECT ALL THE CASH AND AVOID STEPPING ON THE MINE')
-    nul = '$'
-    boom = 'X'
-    for i in range(1, 9):
+def game():
+    field = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    
+    print('\nCOLLECT ALL THE CASH AND AVOID STEPPING ON THE MINE')
+    for i in range(0, 8):   # THIS IS EXCLUSIVE OF LAST NUMBER
+        fieldNum = len(list(filter(lambda x: (type(x) == int), field))) - 1
+        print('\nTURNS REMAINING:', fieldNum)
         layout(field)
         mine = random.choice(field)
         choice = int(input())
-        field[choice - 1] = nul
+        field[choice - 1] = ' '
 
-        if choice == mine:
-            field[choice - 1] = boom
+        if choice == mine or i == 8:
+            field[choice - 1] = 'X'
             layout(field)
-            print('KABOOM')
-            sys.exit()
+            print('KABOOM. Game Over.')
+            #sys.exit()
+            game()
 
     print('YOU HAVE SUCCESSFULLY CLEARED THE FIELD.')
-    sys.exit()
+    game()
+    
+game()
+ 
+
+# TODO: RELOOP THIS SHIT BY ASKING "PLAY AGAIN?"
