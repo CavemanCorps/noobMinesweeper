@@ -19,27 +19,58 @@ def layout(board):
 
 def game():
     field = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    mine = random.choice(field)
     
     print('\nCOLLECT ALL THE CASH AND AVOID STEPPING ON THE MINE')
     for i in range(0, 8):   # THIS IS EXCLUSIVE OF LAST NUMBER
         fieldNum = len(list(filter(lambda x: (type(x) == int), field))) - 1
         print('\nTURNS REMAINING:', fieldNum)
         layout(field)
-        mine = random.choice(field)
         choice = int(input())
         field[choice - 1] = ' '
 
+        print(mine)
         if choice == mine or i == 8:
             field[choice - 1] = 'X'
             layout(field)
             print('KABOOM. Game Over.')
-            #sys.exit()
-            game()
-
-    print('YOU HAVE SUCCESSFULLY CLEARED THE FIELD.')
-    game()
+            #game()
+            return
     
-game()
- 
+    print('YOU HAVE SUCCESSFULLY CLEARED THE FIELD.')
+    #game()
+    return
+    
+while True:
+    choice = input('ready? y/n\n')
+    if choice == 'y':
+        game()
+    if choice == 'n':
+        sys.exit()
 
 # TODO: RELOOP THIS SHIT BY ASKING "PLAY AGAIN?"
+# BREAKING OUT OF A FUNC: "return"
+# https://www.quora.com/How-do-I-get-out-of-a-function-in-Python-using-break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
