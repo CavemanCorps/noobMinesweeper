@@ -31,26 +31,28 @@ def game():
     mine = field[8] # 9
     print('\nCOLLECT ALL THE CASH AND AVOID STEPPING ON THE MINE')
     while True:
-        layout(field)
+        
         numCount = len(list(filter(lambda x: (type(x) == int), field))) 
         print("NUMBER OF NUMS: ", numCount)
+
+        layout(field)
         choice = int(input())
+        field[choice - 1] = ' '
+        print('🙂')
+
+        #if choice != mine:
+
         
         if choice == mine:
             field[choice - 1] = '💣'
-            layout(field)
             print('KABOOM. Game Over.')
             return
 
         elif numCount == 2:
             field[choice - 1] = ' '
-            break
-        else: # IF USER GUESSES CORRECTLY
-            field[choice - 1] = ' '
-            print('🙂')
-
-    layout(field)           
-    print('YOU HAVE SUCCESSFULLY CLEARED THE FIELD.')
+            layout(field)
+            print('YOU HAVE SUCCESSFULLY CLEARED THE FIELD.')
+            return           
     return
     
 while True:
@@ -63,6 +65,22 @@ while True:
 # BREAKING OUT OF A FUNC: "return"
 # https://www.quora.com/How-do-I-get-out-of-a-function-in-Python-using-break
 # YOU KNOW WHAT: might just be better if I use a while loop instead.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
