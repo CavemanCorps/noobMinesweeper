@@ -15,7 +15,7 @@ def layout(board):
 # Game Logic
 def game():
     field = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    # mine = random.choice(field)
+    #mine = random.choice(field)
     mine = field[8]
     print('\nCOLLECT ALL THE CASH AND AVOID STEPPING ON THE MINE')
     while True:
@@ -43,3 +43,5 @@ while True:
         game()
     elif choice == 'n':
         sys.exit()
+
+# CODE READY TO ROLL
