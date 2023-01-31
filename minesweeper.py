@@ -13,10 +13,11 @@ def layout(board):
 
 def game():
     nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    mine = random.choice(nums)
+    #mine = random.choice(nums)
+    mine = nums[8]
     print('\nMINESWEEPER BY ROMAN NAVARRO')
     while True:
-        numCount = None
+        numCount = len(list(filter(lambda x: (type(x) == int), nums))) 
         layout(nums)
         choice = int(input())
         nums[choice - 1] = ' '
